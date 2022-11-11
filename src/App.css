@@ -1,3 +1,37 @@
+@font-face {
+  font-family: "Bold"; /*Can be any text*/
+  src: local("SpaceGrotesk-Bold"),
+    url("./fonts/SpaceGrotesk-Bold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Light"; /*Can be any text*/
+  src: local("SpaceGrotesk-Light"),
+    url("./fonts/SpaceGrotesk-Light.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Medium"; /*Can be any text*/
+  src: local("SpaceGrotesk-Medium"),
+    url("./fonts/SpaceGrotesk-Medium.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Regular"; /*Can be any text*/
+  src: local("SpaceGrotesk-Regular"),
+    url("./fonts/SpaceGrotesk-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "SemiBold"; /*Can be any text*/
+  src: local("SpaceGrotesk-SemiBold"),
+    url("./fonts/SpaceGrotesk-SemiBold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Bold"; /*Can be any text*/
+  src: local("SpaceGrotesk-Bold"),
+    url("./fonts/SpaceGrotesk-Bold.ttf") format("truetype");
+}
 * {
   padding: 0px;
   margin: 0px;

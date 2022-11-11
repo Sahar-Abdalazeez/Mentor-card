@@ -14,8 +14,8 @@ const Input = styled.input`
 
 export const CardInput = ({ style, value }) => {
   return (
-    <Container style={style}>
-      <Input id="inputID" value={value} placeholder="0000  0000  0000  0000" placeholderColor='green' />
+    <Container>
+      <Input style={style} id="inputID" value={value} placeholder="0000  0000  0000  0000" placeholderColor='green' />
     </Container>
   )
 };

@@ -3,3 +3,11 @@
   margin: 0px;
   box-sizing: border-box;
 }
+
+input {
+  outline: none;
+}
+#inputID::placeholder {
+  color: #fff;
+  opacity: 1;
+}

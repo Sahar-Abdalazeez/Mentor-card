@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import styled from "styled-components";
 import { Left } from "../components/Left";
 import { Right } from "../components/Right";
@@ -12,22 +13,28 @@ const Container = styled.div`
 `;
 
 export const Home = () => {
+    const [number, setNumber] = useState('0000 0000 0000 0000');
+    const [name, setName] = useState('JANE APPLEASES');
+    const [date, setDate] = useState({ month: '00', year: '00' });
+    const [cvc, setCvc] = useState('');
+
     return (
         <Container>
             <Left />
             <Right
-                onNumChange={(num) => console.log("this is testing ", num.target.value)}
-                onNameChange={(name) =>
-                    console.log("this is testing ", name.target.value)
-                }
-                onMonthChange={(month) => console.log(month.target.value)}
-                onYearChange={(year) => console.log(year.target.value)}
-                onCVCChange={(cvc) => console.log(cvc.target.value)}
-
+                onNumChange={(num) => setNumber(num.target.value)}
+                onNameChange={(name) => setName(name.target.value)}
+                onMonthChange={(month) => setDate({ month: month.target.value })}
+                onYearChange={(year) => setDate({ year: year.target.value })}
+                onCVCChange={(cvc) => setCvc(cvc.target.value)}
             />
             <ColoredCard
+                cardNum={number}
+                cardName={name}
+                expMonth={date.month}
+                expYear={date.year}
+                cv
 
-                cardNum={4111111111111}
                 style={{ position: "absolute", zIndex: 2, top: 200, left: 200 }}
             />
             <BlackCard

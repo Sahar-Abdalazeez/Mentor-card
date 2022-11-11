@@ -24,10 +24,10 @@ const InputField = styled.input`
 `;
 
 export const Input = (props) => {
-    return (
-        <Container style={props.style}>
-            <Label>{props.label}</Label>
-            <InputField placeholder={props.placeholder} />
-        </Container>
-    )
+  return (
+    <Container style={props.style}>
+      <Label>{props.label}</Label>
+      <InputField placeholder={props.placeholder} onChange={(text) => props.onChange(text)} />
+    </Container>
+  )
 }

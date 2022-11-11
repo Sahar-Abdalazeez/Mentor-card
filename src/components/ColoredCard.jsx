@@ -7,7 +7,7 @@ const Container = styled.div`
 const Card = styled.div`
 background-color:transparent ;
  height: 220px;
- width: 380px;
+ width: 420px;
  padding:30px;
  border-radius: 10px;
 
@@ -41,13 +41,11 @@ const Name = styled.text`
   text-transform: uppercase;
 `;
 
-const Date = styled.text`
+const Date = styled.div`
     color:white ;
     justify-content:center ;
     align-items: center;
-      font-size: 14px;
-
-
+    font-size: 14px;
 `;
 const Details = styled.div`
 display: flex;
@@ -68,7 +66,7 @@ export const ColoredCard = ({ style, cardNum, cardName, expMonth, expYear }) => 
           <LargeCircle />
           <SmallCircle />
         </CirclesContainer>
-        <CardInput value={cardNum} style={{ color: 'white' }} />
+        <CardInput value={(cardNum)} style={{ color: 'white' }} />
         <Details>
           <Name>{cardName} </Name>
           <Date> {`${expMonth}/${expYear}`} </Date>

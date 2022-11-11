@@ -9,13 +9,14 @@ const Input = styled.input`
   width: 100%;
   border-width: 0px;
   font-size: 30px;
+  pointer-events:none ;
 `;
 
 
 export const CardInput = ({ style, value }) => {
   return (
     <Container>
-      <Input style={style} id="inputID" value={value} placeholder="0000  0000  0000  0000" placeholderColor='green' />
+      <Input style={style} id="inputID" value={value} placeholder="0000000000000000" />
     </Container>
   )
 };

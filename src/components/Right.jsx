@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import styled from 'styled-components';
 import { Input } from '../components/Input';
 
@@ -7,6 +8,7 @@ display: flex;
 flex-direction: column;
 justify-content: center;
 align-items: center;
+min-width: 600px;
 `;
 
 const InputsContainer = styled.div`
@@ -28,13 +30,18 @@ const DetailsContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 30%;
+  min-width:400px ;
 `;
 const DateLabelContainer = styled.div`
   
 `;
-const Label = styled.div``;
+
+const Label = styled.div`
+/* font-family:'SpaceGrotesk-' ; */
+`;
 
 export const Right = (props) => {
+    const [cardNum, setCardNum] = useState();
     return (
         <RightContainer>
             <DetailsContainer>
@@ -42,19 +49,19 @@ export const Right = (props) => {
                     onChange={(name) => {
                         props.onNameChange(name)
                     }} />
-                <Input label="CARD NUMBER:" placeholder="1234 5678 9123 0000"
+                <Input type="card" label="CARD NUMBER:" placeholder="1234 5678 9123 0000"
                     onChange={(num) => {
-                        props.onNumChange(num)
+                        props.onNumChange(num);
                     }} />
                 <InputsContainer>
                     <DateLabelContainer>
-                        <Label>EXP,DATE (MM/YY)</Label>
+                        <Label>EXP.DATE (MM/YY)</Label>
                         <DateContainer>
                             <Input style={{ width: 100, marginRight: 20 }} placeholder="MM" onChange={(month) => {
                                 props.onMonthChange(month)
                             }} />
                             <Input style={{ width: 100 }} placeholder="YY" onChange={(year) => {
-                                props.onCVCChange(year)
+                                props.onYearChange(year)
                             }}
                             />
                         </DateContainer>

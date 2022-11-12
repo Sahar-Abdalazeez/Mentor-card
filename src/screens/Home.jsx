@@ -4,18 +4,19 @@ import { Left } from "../components/Left";
 import { Right } from "../components/Right";
 import { ColoredCard } from "../components/ColoredCard";
 import { BlackCard } from "../components/BlackCard";
+import { splitCardNum } from '../utils/card.utils';
 const Container = styled.div`
   display: flex;
-  width: 100%;
   height: 929px;
   flex-direction: row;
   position: relative;
 `;
 
 export const Home = () => {
-    const [number, setNumber] = useState('0000 0000 0000 0000');
+    const [number, setNumber] = useState('0000000000000000');
     const [name, setName] = useState('JANE APPLEASES');
-    const [date, setDate] = useState({ month: '00', year: '00' });
+    const [month, setMonth] = useState('00');
+    const [year, setYear] = useState('00');
     const [cvc, setCvc] = useState('');
 
     return (
@@ -24,21 +25,20 @@ export const Home = () => {
             <Right
                 onNumChange={(num) => setNumber(num.target.value)}
                 onNameChange={(name) => setName(name.target.value)}
-                onMonthChange={(month) => setDate({ month: month.target.value })}
-                onYearChange={(year) => setDate({ year: year.target.value })}
+                onMonthChange={(month) => setMonth(month.target.value)}
+                onYearChange={(year) => setYear(year.target.value)}
                 onCVCChange={(cvc) => setCvc(cvc.target.value)}
             />
             <ColoredCard
-                cardNum={number}
+                cardNum={splitCardNum(number)}
                 cardName={name}
-                expMonth={date.month}
-                expYear={date.year}
-                cv
+                expMonth={month}
+                expYear={year}
 
-                style={{ position: "absolute", zIndex: 2, top: 200, left: 200 }}
+                style={{ position: "absolute", zIndex: 2, top: 200, left: '10%' }}
             />
             <BlackCard
-                style={{ position: "absolute", zIndex: 2, top: 500, left: 280 }}
+                style={{ position: "absolute", zIndex: 2, top: 500, left: '15%' }}
             />
         </Container>
     );

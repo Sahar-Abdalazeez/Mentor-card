@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components";
 import { Input } from "../components/Input";
-
+import { Done } from '../components/Done';
 const RightContainer = styled.div`
   width: 100%;
   display: flex;
@@ -183,7 +183,7 @@ export const Right = (props) => {
                     >
                         Confirm
                     </Confirm>
-                </DetailsContainer> : <Label>done</Label>}
+                </DetailsContainer> : <Done />}
         </RightContainer>
     );
 };

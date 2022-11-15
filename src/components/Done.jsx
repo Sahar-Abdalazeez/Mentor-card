@@ -1,18 +1,16 @@
-import { useState } from "react";
 import styled from "styled-components";
-import { Input } from "../components/Input";
 import { ReactComponent as ReactLogo } from '../assets/images/icon-complete.svg';
-
+import { useWindowSize } from '../utils/screen.utils'
 
 
 const DetailsContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 30%;
-  min-width: 400px;
-  /* background-color: red; */
+  min-width: ${props => props.isMobile ? 375 : 400}px;
   justify-content:center ;
   align-items: center;
+  padding:${props => props.isMobile ? 20 : 0}px
 `;
 
 const Title = styled.text`
@@ -37,13 +35,13 @@ const Continue = styled.button`
   margin-top: 50px;
 `;
 export const Done = () => {
-
-    return (
-        <DetailsContainer>
-            <ReactLogo />
-            <Title>THANK YOU! </Title>
-            <Description>We've added your card details </Description>
-            <Continue style={{ color: "white", fontSize: 18, fontFamily: 'Medium' }} >Continue</Continue>
-        </DetailsContainer>
-    )
+  const isMobile = useWindowSize();
+  return (
+    <DetailsContainer isMobile={isMobile}>
+      <ReactLogo />
+      <Title>THANK YOU! </Title>
+      <Description>We've added your card details </Description>
+      <Continue style={{ color: "white", fontSize: 18, fontFamily: 'Medium' }} >Continue</Continue>
+    </DetailsContainer>
+  )
 }

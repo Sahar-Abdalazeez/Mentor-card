@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { Left } from "../components/Left";
-import { Right } from "../components/Right";
-import { ColoredCard } from "../components/ColoredCard";
-import { BlackCard } from "../components/BlackCard";
-import { splitCardNum } from '../utils/card.utils';
+import { Left } from "../../components/Left";
+import { Right } from "../../components/Right";
+import { ColoredCard } from "../../components/ColoredCard";
+import { BlackCard } from "../../components/BlackCard";
+import { splitCardNum } from '../../utils/card.utils';
 const Container = styled.div`
   display: flex;
   height: 929px;
@@ -12,7 +12,7 @@ const Container = styled.div`
   position: relative;
 `;
 
-export const Home = () => {
+export const HomeDesktop = () => {
     const [number, setNumber] = useState('0000000000000000');
     const [name, setName] = useState('JANE APPLEASES');
     const [month, setMonth] = useState('00');

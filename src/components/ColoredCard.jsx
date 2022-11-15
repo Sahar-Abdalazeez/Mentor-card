@@ -5,8 +5,6 @@ import { CardInput } from './CardInput';
 import { useWindowSize } from "../utils/screen.utils";
 
 const Container = styled.div`
-/* height: 220px;
- width: 420px; */
  height: ${props => props.isMobile ? 100 : 220}px;
  width: ${props => props.isMobile ? 280 : 420}px;
 `;

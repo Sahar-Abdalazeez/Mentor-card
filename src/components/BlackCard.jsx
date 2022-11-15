@@ -14,14 +14,22 @@ const Container = styled.div`
  width: ${props => props.isMobile ? 220 : 420}px;
 `;
 
+const Cvc = styled.text`
+position: absolute ;
+left: 83%;
+top: 107px;
+color: white;
+`;
 
-export const BlackCard = ({ style }) => {
+export const BlackCard = (props) => {
     const isMobile = useWindowSize();
-    return (<Container isMobile={isMobile} style={style}>
+    return (<Container isMobile={isMobile} style={props.style}>
         <Card isMobile={isMobile} style={{
             backgroundImage: `url(${background})`, backgroundRepeat: 'no-repeat', backgroundSize: "cover", backgroundPositionX: 'center', backgroundPositionY: 'center'
 
-        }} />
+        }}>
+            <Cvc >{props.cvc || '000'}</Cvc>
+        </Card>
     </Container>)
 
 }

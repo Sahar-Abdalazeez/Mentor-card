@@ -12,12 +12,14 @@ background-color:transparent ;
 `;
 const Container = styled.div`
  width: ${props => props.isMobile ? 220 : 420}px;
+ position: relative;
 `;
 
 const Cvc = styled.text`
 position: absolute ;
-left: 83%;
-top: 107px;
+z-index:1;
+left:${props => props.isMobile ? 230 : 350}px;
+top: ${props => props.isMobile ? 80 : 107}px;
 color: white;
 `;
 
@@ -28,7 +30,7 @@ export const BlackCard = (props) => {
             backgroundImage: `url(${background})`, backgroundRepeat: 'no-repeat', backgroundSize: "cover", backgroundPositionX: 'center', backgroundPositionY: 'center'
 
         }}>
-            <Cvc >{props.cvc || '000'}</Cvc>
+            <Cvc isMobile={isMobile} >{props.cvc || '000'}</Cvc>
         </Card>
     </Container>)
 

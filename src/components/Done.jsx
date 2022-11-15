@@ -2,15 +2,14 @@ import styled from "styled-components";
 import { ReactComponent as ReactLogo } from '../assets/images/icon-complete.svg';
 import { useWindowSize } from '../utils/screen.utils'
 
-
 const DetailsContainer = styled.div`
   display: flex;
   flex-direction: column;
-  width: 30%;
+  width: ${props => props.isMobile ? '100%' : ' 30%'};
   min-width: ${props => props.isMobile ? 375 : 400}px;
   justify-content:center ;
   align-items: center;
-  padding:${props => props.isMobile ? 20 : 0}px
+  padding:${props => props.isMobile ? 20 : 0}px;
 `;
 
 const Title = styled.text`
@@ -26,7 +25,11 @@ const Description = styled.text`
   font-family: 'Medium';
 
 `;
+
 const Continue = styled.button`
+  color: white; 
+  font-size: 18px;
+  font-family: "Medium" ;
   width: 100%;
   height: 50px;
   background-color: hsl(278, 68%, 11%);
@@ -34,6 +37,7 @@ const Continue = styled.button`
   border-color: hsl(278, 68%, 11%);
   margin-top: 50px;
 `;
+
 export const Done = () => {
   const isMobile = useWindowSize();
   return (
@@ -41,7 +45,7 @@ export const Done = () => {
       <ReactLogo />
       <Title>THANK YOU! </Title>
       <Description>We've added your card details </Description>
-      <Continue style={{ color: "white", fontSize: 18, fontFamily: 'Medium' }} >Continue</Continue>
+      <Continue isMobile={isMobile} >Continue</Continue>
     </DetailsContainer>
   )
 }

@@ -1,36 +1,53 @@
 import { useState } from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { Input } from "../components/Input";
 import { Done } from '../components/Done';
+import { useWindowSize } from '../utils/screen.utils';
+import { splitCardNum } from '../utils/card.utils'
+
 const RightContainer = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  min-width: 600px;
+    ${props => {
+        if (props.isMobile) {
+            return css`
+        min-width:300px ;
+        justify-content: center;
+        `;
+        }
+        else {
+            return css`
+             justify-content:center;
+             align-items: center;
+             min-width:600px ;
+
+        `
+        }
+    }}
 `;
 
 const InputsContainer = styled.div`
   display: flex;
-  justify-content: space-between;
-  flex: 1;
+   flex: 1;
   width: 100%;
+  justify-content: center;
+  align-items:center ;
 `;
 
 const DateContainer = styled.div`
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  width: 80%;
-  margin-right: 50px;
+  width:${props => props.isMobile ? '60%' : '80%'};
+  margin-right:${props => props.isMobile ? 0 : 50}px;
 `;
 
 const DetailsContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 30%;
-  min-width: 400px;
+  min-width: ${props => props.isMobile ? 300 : 400}px;
+  margin-left:${props => props.isMobile ? 30 : ''}px;
 `;
 const DateLabelContainer = styled.div``;
 
@@ -38,6 +55,8 @@ const Label = styled.div`
   font-family: "Medium";
   font-size: 14px;
   letter-spacing: 2px;
+  height: 20px;
+  width: 100%;
 `;
 const Confirm = styled.button`
   width: "100%";
@@ -45,11 +64,12 @@ const Confirm = styled.button`
   background-color: hsl(278, 68%, 11%);
   border-radius: 10px;
   border-color: hsl(278, 68%, 11%);
+  margin-top: 30px;
 `;
-// const ConfirmText =
 
 export const Right = (props) => {
     const regex = /^[0-9]+$/;
+    const isMobile = useWindowSize();
     const [completed, setCompleted] = useState(false);
     const [fieldsValues, setFieldsValues] = useState({
         name: "",
@@ -91,12 +111,11 @@ export const Right = (props) => {
         }
 
     };
-    console.log('completed', completed)
     return (
-        <RightContainer>
+        <RightContainer isMobile={isMobile} style={props.style}>
             {!completed ?
-                <DetailsContainer>
-                    <Input
+                <DetailsContainer isMobile={isMobile}>
+                    <Input style={{ width: '100%' }}
                         error={error.name}
                         label="CARDHOLDER NAME:"
                         placeholder="ex: Jane Appleseed"
@@ -111,6 +130,7 @@ export const Right = (props) => {
                         }}
                     />
                     <Input
+                        value={fieldsValues.number}
                         error={error.number}
                         isFocused={true}
                         type="card"
@@ -122,14 +142,17 @@ export const Right = (props) => {
 
                             setFieldsValues((prevActivatedItem) => ({
                                 ...prevActivatedItem,
-                                number: num.target.value,
+                                number: (num.target.value),
                             }));
                         }}
                     />
+                    <Label>EXP.DATE (MM/YY)</Label>
+
                     <InputsContainer>
+
+
                         <DateLabelContainer>
-                            <Label>EXP.DATE (MM/YY)</Label>
-                            <DateContainer>
+                            <DateContainer isMobile={isMobile}>
                                 <Input
                                     error={error.month}
                                     style={{ width: 100, marginRight: 20 }}
@@ -161,14 +184,13 @@ export const Right = (props) => {
                             </DateContainer>
                         </DateLabelContainer>
                         <Input
+                            style={{ marginRight: 10 }}
                             error={error.cvc}
-                            style={{ width: 500 }}
                             label="CVC"
                             placeholder="e.g 123"
                             onChange={(cvc) => {
                                 props.onCVCChange(cvc);
                                 setError((prevError) => ({ ...prevError, cvc: false }));
-
                                 setFieldsValues((prevActivatedItem) => ({
                                     ...prevActivatedItem,
                                     cvc: cvc.target.value,

@@ -36,8 +36,8 @@ const InputsContainer = styled.div`
 const DateContainer = styled.div`
   display: flex;
   align-items: center;
-  width: ${(props) => (props.isMobile ? "50%" : "80%")};
-  margin-right: ${(props) => (props.isMobile ? 10 : 50)}px;
+  width: ${(props) => (props.isMobile ? "70%" : "60%")};
+  margin-right: ${(props) => (props.isMobile ? 10 : 0)}px;
 `;
 
 const DetailsContainer = styled.div`
@@ -45,14 +45,6 @@ const DetailsContainer = styled.div`
   flex-direction: column;
   width: 30%;
   min-width: ${(props) => (props.isMobile ? 300 : 400)}px;
-`;
-
-const Label = styled.div`
-  font-family: "Medium";
-  font-size: 14px;
-  letter-spacing: 2px;
-  height: 20px;
-  width: 100%;
 `;
 
 const Confirm = styled.button`
@@ -86,18 +78,18 @@ export const Right = (props) => {
     const getError = () => {
         //name validation
         if (!fieldsValues.name.length) {
-            setError((prevError) => ({ ...prevError, name: "can't be empty" }));
+            setError((prevError) => ({ ...prevError, name: "Can't be blank" }));
         } else {
             setError((prevError) => ({ ...prevError, name: false }));
         }
 
         //card number validation
         if (!fieldsValues.number.length) {
-            setError((prevError) => ({ ...prevError, number: "can't be empty" }));
+            setError((prevError) => ({ ...prevError, number: "Can't be blank" }));
         } else if (!fieldsValues.number.match(regex)) {
             setError((prevError) => ({
                 ...prevError,
-                number: "numbers only allowed ",
+                number: "Wrong format ,numbers only  ",
             }));
         } else {
             setError((prevError) => ({
@@ -108,28 +100,27 @@ export const Right = (props) => {
 
         //month validation
         if (!fieldsValues.month.length) {
-            setError((prevError) => ({ ...prevError, month: "can't be empty" }));
+            setError((prevError) => ({ ...prevError, month: "Can't be blank" }));
         } else if (fieldsValues.month > 12 || fieldsValues.month < 1) {
-            setError((prevError) => ({ ...prevError, month: "wrong value" }));
+            setError((prevError) => ({ ...prevError, month: "Can't be blank" }));
         } else {
             setError((prevError) => ({ ...prevError, month: false }));
         }
 
         //year validation
         if (!fieldsValues.year.length) {
-            setError((prevError) => ({ ...prevError, year: "can't be empty" }));
+            setError((prevError) => ({ ...prevError, year: "Can't be blank" }));
         } else {
             setError((prevError) => ({ ...prevError, year: false }));
         }
         //cvc validation
         if (!fieldsValues.cvc.length) {
-            setError((prevError) => ({ ...prevError, cvc: "can't be empty" }));
+            setError((prevError) => ({ ...prevError, cvc: "Can't be blank" }));
         } else {
             setError((prevError) => ({ ...prevError, cvc: false }));
         }
     };
 
-    console.log("error", error);
     return (
         <RightContainer isMobile={isMobile} style={props.style}>
             {!completed ? (
@@ -167,13 +158,13 @@ export const Right = (props) => {
                             }));
                         }}
                     />
-                    <Label>EXP.DATE (MM/YY)</Label>
 
                     <InputsContainer>
                         <DateContainer isMobile={isMobile}>
                             <Input
+                                label="EXP.DATE(MM/YY)"
                                 error={error.month}
-                                style={{ width: 100, marginRight: 20 }}
+                                style={isMobile ? { width: 90, marginRight: 5 } : { width: 100, marginRight: 10 }}
                                 placeholder="MM"
                                 onChange={(month) => {
                                     props.onMonthChange(month);
@@ -187,7 +178,7 @@ export const Right = (props) => {
                             />
                             <Input
                                 error={error.year}
-                                style={{ width: 100 }}
+                                style={isMobile ? { width: 90, marginRight: 20 } : { width: 100, marginRight: 10 }}
                                 placeholder="YY"
                                 onChange={(year) => {
                                     props.onYearChange(year);
@@ -202,7 +193,7 @@ export const Right = (props) => {
                         </DateContainer>
                         <Input
                             maxLength={3}
-                            style={{ marginRight: 10 }}
+                            style={{ width: '100%', marginLeft: isMobile ? 0 : 20, marginRight: 0, }}
                             error={error.cvc}
                             label="CVC"
                             placeholder="e.g 123"

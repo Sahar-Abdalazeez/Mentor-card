@@ -37,3 +37,6 @@ In the project directory, you can run:
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+visit this link to see the result [https://darling-praline-6feebe.netlify.app/](https://darling-praline-6feebe.netlify.app/)
+
+<img source='./design/desktop-default-state.png' >

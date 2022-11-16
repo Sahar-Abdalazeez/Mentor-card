@@ -234,7 +234,11 @@ export const Right = (props) => {
                     </Confirm>
                 </DetailsContainer>
             ) : (
-                <Done />
+                <Done continueClicked={() => {
+                    setCompleted(false);
+                    setFieldsValues({ name: '', number: '', cvc: '', month: '', year: '' });
+                    window.location.reload();
+                }} />
             )}
         </RightContainer>
     );

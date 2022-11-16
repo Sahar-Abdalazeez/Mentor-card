@@ -38,14 +38,14 @@ const Continue = styled.button`
   margin-top: 50px;
 `;
 
-export const Done = () => {
+export const Done = (props) => {
   const isMobile = useWindowSize();
   return (
     <DetailsContainer isMobile={isMobile}>
       <ReactLogo />
       <Title>THANK YOU! </Title>
       <Description>We've added your card details </Description>
-      <Continue isMobile={isMobile} >Continue</Continue>
+      <Continue isMobile={isMobile} onClick={() => props.continueClicked()} >Continue</Continue>
     </DetailsContainer>
   )
 }

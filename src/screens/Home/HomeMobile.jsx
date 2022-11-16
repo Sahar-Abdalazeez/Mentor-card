@@ -5,7 +5,6 @@ import { Right } from "../../components/Right";
 import { ColoredCard } from "../../components/ColoredCard";
 import { BlackCard } from "../../components/BlackCard";
 import { splitCardNum } from '../../utils/card.utils';
-import { useWindowSize } from '../../utils/screen.utils';
 
 const Container = styled.div`
   display: flex;
@@ -31,6 +30,7 @@ export const HomeMobile = () => {
                 height: 250, width: 375
             }} />
             <BlackCard
+                cvc={cvc}
                 style={{ position: "absolute", zIndex: 2, top: 30, left: '15%' }}
             />
             <ColoredCard

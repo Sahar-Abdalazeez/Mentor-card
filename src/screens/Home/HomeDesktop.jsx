@@ -7,7 +7,7 @@ import { BlackCard } from "../../components/BlackCard";
 import { splitCardNum } from '../../utils/card.utils';
 const Container = styled.div`
   display: flex;
-  height: 929px;
+  height: 100vh;
   flex-direction: row;
   position: relative;
 `;
@@ -38,6 +38,7 @@ export const HomeDesktop = () => {
                 style={{ position: "absolute", zIndex: 2, top: 200, left: '10%' }}
             />
             <BlackCard
+                cvc={cvc}
                 style={{ position: "absolute", zIndex: 2, top: 500, left: '15%' }}
             />
         </Container>
